@@ -8,6 +8,8 @@ body {
   margin: 3em;
   font-family: Verdana, sans-serif;
   min-width: 380px;
+  overflow-y: auto;  /* vertical scroll enabled */
+  overflow-x: hidden; /* prevent sideways scrolling */
 
 }
 
