@@ -84,7 +84,7 @@ select {
 } */
 
 .responsive-img {
-  max-width: 100%;   /* Scale image down if container is smaller */
+  max-width: 90%;   /* Scale image down if container is smaller */
   height: auto;      /* Maintain aspect ratio */
   display: block;         /* So margin works */
   margin: 0 auto;         /* Centers the image horizontally */
