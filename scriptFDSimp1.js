@@ -264,50 +264,6 @@ function getInput4() {
     }
 }
 
-
-// function getInput41() {
-// //     console.log ("got to getInput4!");
-// //     /* This retrieve the input value from consistency selection */    
-// //     let inputT4 = document.getElementById("consistency"); 
-// //         if (inputT4 !== null) {
-// //         // alert("inputT4: " + inputT4); 
-
-// //         let inputT4Name = inputT4.name; 
-// //         // alert("inputT4Name: " + inputT4Name); 
-
-
-// //             if (inputT4Name == "consistency") {
-
-// //                 let selectedValFD4 = inputT4.value;
-// //                 let selectedTxtFD4 = inputT4.options[inputT4.selectedIndex].text; 
-
-// //             /* Direct to Linked Page */
-// //                 if (selectedValFD4 == "c1") {
-// //                     alert("selectedValFD4: " + selectedValFD4);
-// //                         document.location = "index_FD7.html";
-// //                 } 
-// //                 if (selectedValFD4 == "c2") {
-// //                     alert("selectedValFD4: " + selectedValFD4);                  
-// //                         document.location = "index_FD8.html";
-// //                 } 
-
-// //                 // alert("input from FD4_text part: " + selectedTxtFD4);
-// //                 // alert("input from FD4_value part: " + selectedValFD4);
-
-// //                 localStorage.setItem("consistency selection value", selectedValFD4);
-// //                 localStorage.setItem("consistency selection text", selectedTxtFD4); 
-
-
-// //             } else {
-// //                 // do nothing 
-// //             }
-
-// //         }   if (inputT4 == null) {
-// //             // alert("inputT4: " + inputT4);  
-// //         }
-//     }
-
- 
  /* Grab input from FD5 html page */
 
 function getInput5() {
@@ -345,52 +301,6 @@ function getInput5() {
     }
 }
 
-// function getInput51() {
-//     // alert ("got to getInput5!");
-//     /* This retrieve the input value from thickness 1 selection */    
-//     let inputT5 = document.getElementById("thick1"); 
-//         if (inputT5 !== null) {
-//         // alert("inputT5: " + inputT5); 
-
-//         let inputT5Name = inputT5.name; 
-//         // alert("inputT5Name: " + inputT5Name); 
-
-
-//             if (inputT5Name == "thick1") {
-
-//                 let selectedValFD5 = inputT5.value;
-//                 let selectedTxtFD5 = inputT5.options[inputT5.selectedIndex].text; 
-
-//             /* Direct to Linked Page */
-//                 if (selectedValFD5 == "t11") {
-//                     // alert("selectedValFD5: " + selectedValFD5);
-//                         document.location = "index_FD90.html";
-//                 } 
-//                 if (selectedValFD5 == "t12") {
-//                     // alert("selectedValFD5: " + selectedValFD5);                  
-//                         document.location = "index_FD91.html";
-//                 } 
-//                 if (selectedValFD5 == "t13") {
-//                     // alert("selectedValFD5: " + selectedValFD5);                  
-//                         document.location = "index_FD92.html";
-//                 } 
-
-//                 // alert("input from FD5_text part: " + selectedTxtFD5);
-//                 // alert("input from FD5_value part: " + selectedValFD5);
-
-//                 localStorage.setItem("thickness1 selection value", selectedValFD5);
-//                 localStorage.setItem("thickness1 selection text", selectedTxtFD5); 
-
-
-//             } else {
-//                 // do nothing 
-//             }
-
-//         }   if (inputT5 == null) {
-//             // alert("inputT5: " + inputT5);  
-//         }
-//     }   
-
  /* Grab input from FD6 html page */
 
 function getInput6() {
@@ -425,49 +335,6 @@ function getInput6() {
     }
 }
 
-//  function getInput61() {
-//     // alert ("got to getInput6!");
-//     /* This retrieve the input value from thickness 1 selection */    
-//     let inputT6 = document.getElementById("thick2"); 
-//         if (inputT6 !== null) {
-//         // alert("inputT6: " + inputT6); 
-
-//         let inputT6Name = inputT6.name; 
-//         // alert("inputT6Name: " + inputT6Name); 
-
-
-//             if (inputT6Name == "thick2") {
-
-//                 let selectedValFD6 = inputT6.value;
-//                 let selectedTxtFD6 = inputT6.options[inputT6.selectedIndex].text; 
-
-//             /* Direct to Linked Page */
-//                 if (selectedValFD6 == "t21") {
-//                     // alert("selectedValFD6: " + selectedValFD6);
-//                         document.location = "index_FD93.html";
-//                 } 
-//                 if (selectedValFD6 == "t22") {
-//                     // alert("selectedValFD6: " + selectedValFD6);                  
-//                         document.location = "index_FD94.html";
-//                 } 
-
-//                 // alert("input from FD6_text part: " + selectedTxtFD6);
-//                 // alert("input from FD6_value part: " + selectedValFD6);
-
-//                 localStorage.setItem("thickness2 selection value", selectedValFD6);
-//                 localStorage.setItem("thickness2 selection text", selectedTxtFD6); 
-
-
-//             } else {
-//                 // do nothing 
-//             }
-
-//         }   if (inputT6 == null) {
-//             // alert("inputT6: " + inputT6);  
-//         }
-
-//     }   
-
  /* Grab input from FD7 html page */
 function getInput7() {
     let inputT7 = document.getElementById("FD7"); 
@@ -501,49 +368,6 @@ function getInput7() {
     }
 }
 
-//  function getInput71() {
-//    console.log ("got to getInput7!");
-//     /* This retrieve the input value from thickness 1 selection */    
-//     let inputT7 = document.getElementById("size"); 
-//         if (inputT7 !== null) {
-//         // alert("inputT7: " + inputT7); 
-
-//         let inputT7Name = inputT7.name; 
-//         // alert("inputT7Name: " + inputT7Name); 
-
-
-//             if (inputT7Name == "size") {
-
-//                 let selectedValFD7 = inputT7.value;
-//                 let selectedTxtFD7 = inputT7.options[inputT7.selectedIndex].text; 
-
-//             /* Direct to Linked Page */
-//                 if (selectedValFD7 == "s1") {
-//                     alert("selectedValFD7: " + selectedValFD7);
-//                         document.location = "index_FD95.html";
-//                 } 
-//                 if (selectedValFD7 == "s2") {
-//                     alert("selectedValFD7: " + selectedValFD7);                  
-//                         document.location = "index_FD96.html";
-//                 } 
-
-//                 // alert("input from FD7_text part: " + selectedTxtFD7);
-//                 // alert("input from FD7_value part: " + selectedValFD7);
-
-//                 localStorage.setItem("size selection value", selectedValFD7);
-//                 localStorage.setItem("size selection text", selectedTxtFD7); 
-
-
-//             } else {
-//                 // do nothing 
-//             }
-
-//         }   if (inputT7 == null) {
-//             // alert("inputT7: " + inputT7);  
-//         }
-
-//     }   
-
 
  /* Grab input from FD8 html page */
 function getInput8() {
@@ -576,74 +400,6 @@ function getInput8() {
         console.log("input8 null: " + inputT8);
     }
 }
-
-function getInput81() {
-    // alert ("got to getInput8!");
-    /* This retrieve the input value from thickness 1 selection */    
-    let inputT8 = document.getElementById("chew"); 
-        if (inputT8 !== null) {
-        // alert("inputT8: " + inputT8); 
-
-        let inputT8Name = inputT8.name; 
-        // alert("inputT8Name: " + inputT8Name); 
-
-
-            if (inputT8Name == "chew") {
-
-                let selectedValFD8 = inputT8.value;
-                let selectedTxtFD8 = inputT8.options[inputT8.selectedIndex].text; 
-
-            /* Direct to Linked Page */
-                if (selectedValFD8 == "c1") {
-                    // alert("selectedValFD8: " + selectedValFD8);
-                        document.location = "index_FD97e.html";
-                } 
-                if (selectedValFD8 == "c2") {
-                    // alert("selectedValFD8: " + selectedValFD8);                  
-                        document.location = "index_FD97r.html";
-                } 
-
-                // alert("input from FD8_text part: " + selectedTxtFD8);
-                // alert("input from FD8_value part: " + selectedValFD8);
-
-                localStorage.setItem("chew selection value", selectedValFD8);
-                localStorage.setItem("chew selection text", selectedTxtFD8); 
-
-
-            } else {
-                // do nothing 
-            }
-
-        }   if (inputT8 == null) {
-            // alert("inputT8: " + inputT8);  
-        }
-
-    }   
-
-/* The following function "getDropdownValTxt()" works when called within the previous one "getInput()", but now pushed this
-one into the getInput()function. But need the following codes inside getInput() funtion */
-
-        // getDropdownValTxt("drinklevel"); /* seperate out this as a sepedate function */
-        // getDropdownValTxt("foodlevel"); 
-
-// function getDropdownValTxt(elementID) {
-//     let dropdown = document.getElementById(elementID);
-//     let selectedValue = dropdown.value; // Gets the value of the selected option
-//     let selectedText = dropdown.options[dropdown.selectedIndex].text; // Gets the visible text
-
-//     alert('Selected Value: ' + selectedValue);
-//     alert('Selected Text: ' + selectedText);
-
-//     if (elementID == "drinklevel") {
-//         alert(elementID);
-//         localStorage.setItem("inputDTxt", selectedText); 
-//         alert('What is Selected Text for Drink? ' + selectedText);
-//     } if (elementID == "foodlevel") {
-//         alert(elementID);
-//         localStorage.setItem("inputFTxt", selectedText); 
-//         alert('What is Selected Text for Food? ' + selectedText);
-//     } 
-// } 
 
 
 function readStValues() {
@@ -993,32 +749,6 @@ function decisions() {
     }
 }
 
-// function videoDisplay(){ 
-
-//     let videoSelector = document.getElementById('thick1');
-//     let videoFrame = document.getElementById('videoFrame');
-//     let selectedVideo = true; 
-
-//     videoSelector.addEventListener('change', function() {
-//       let selectedVideo = this.value;
-//       alert('this value: ' + selectedVideo)
-//       if (selectedVideo == "t11") {
-//         videoFrame.src = "https://www.youtube.com/embed/j100JEKGKG0?si=kxur_E-tviYAleFb";
-//         } 
-//       if (selectedVideo == "t12") {
-//         videoFrame.src = "https://www.youtube.com/embed/lHjjVvHrTNQ?si=46sk__PPnBgmOnxI";
-//       }
-//       if (selectedVideo == "t13") {
-//         videoFrame.src = "https://www.youtube.com/embed/-dCGsu8n26E?si=cup6kYM6BFJbBfF3";
-//       }
-//       else {
-//         // do nothing 
-//       }
-//      }
-//     );
-// }
-
-
 function videoDemo() { 
 
     let videos = document.getElementById("videos");
@@ -1116,34 +846,6 @@ function showFRec() {
     fSel.classList.remove("hidden");
     fSel.classList.add("visible");
 }
-
-
-// function hideFSelect1() {
-//   let select = document.getElementById("foodlevel");
-//   select.style.display = "hidden";
-//   select.disabled = true;   // disabled fields are ignored in validation
-
-// }
-
-// function unreqFSelect() {
-//     let food = document.getElementById("food");
-//     console.log ('Got to this element ID : ' + food);
-//     food.classList.remove("hidden");
-//     food.classList.add("visible");
-//     let fsel = document.getElementById("foodlevel");
-// //   select.style.display = "none";     // hide it
-//     fsel.removeAttribute("required"); // remove validation requirement
-// }
-
-// function unreqDSelect() {
-//     let drink = document.getElementById("drink");
-//     console.log ('Got to this element ID : ' + drink);
-//     drink.classList.remove("hidden");
-//     drink.classList.add("visible");
-//     let dsel = document.getElementById("drinklevel");
-// //   select.style.display = "none";     // hide it
-//     dsel.removeAttribute("required"); // remove validation requirement
-// }
 
 function defaultImg() {
     let imageElement = document.getElementById('imageFrame');

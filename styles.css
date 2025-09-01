@@ -5,9 +5,10 @@ html {
 } /* default */
 
 body {
-  margin: 1em;
+  margin: 3em;
   font-family: Verdana, sans-serif;
   min-width: 380px;
+
 }
 
 header {
@@ -59,7 +60,7 @@ input {
 
 select {
   width: 100%;
-  /* max-width: 25rem; */
+  max-width: 25rem;
   padding: clamp(8px, 2vw, 12px); /* adjusts with screen size */
   font-size: clamp(1.5rem, 2vw, 2rem);
   border: 1px solid #ccc;
