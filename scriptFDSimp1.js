@@ -1,0 +1,1344 @@
+/*   This parts works by grabbing individual input by its id and then its value
+
+    let input1 = document.getElementById("itemname"); 
+    let inputVal1 = input1.value;
+    alert("input area 1 value: " + inputVal1);
+    console.log (inputVal1); 
+
+    let input2 = document.getElementById("drinklevel"); 
+    let inputVal2 = input2.value;
+    alert("input area 2 value: " + inputVal2);
+
+    let input3 = document.getElementById("foodlevel"); 
+    let inputVal3 = input3.value;
+    alert("input area 3 value: " + inputVal3); 
+    
+*/
+
+
+function dfSelection() {
+    let dfSelector = document.getElementById('drinkfood');
+    // let imageElement = document.getElementById('imageFrame');
+    let dfSelVal = true; 
+
+    dfSelector.addEventListener('change', function() {
+      let dfSelVal = this.value;
+      console.log ('DF value: ' + dfSelVal);
+
+      if (dfSelVal == "dl") { 
+        showChoiceD(); 
+        } 
+      if (dfSelVal == "fl") {
+        showChoiceF(); 
+        }
+    }
+    );
+}
+
+
+function getInput() {
+    
+    /* This following works by grabing all 3 values from the form tag id and then retrieves individual values*/
+    let inputT = document.getElementById("inputValue"); 
+    if (inputT !== null) {
+    console.log("inputT: " + inputT);
+
+    let inputTName = inputT.name; 
+        console.log("inputTName; " + inputTName);
+
+        if (inputTName == "inputValue") {
+         let ip1 = inputT.elements["itemname"]; 
+         let ip1a = inputT.elements["drinkfood"];
+
+         let ipVal1 = ip1.value;
+         let ipVal1a = ip1a.value; 
+         console.log ("input val1: " + ipVal1);
+         console.log ("input val1a: " + ipVal1a);
+        
+         localStorage.clear(); // clear everything first
+         localStorage.setItem("input1", ipVal1);
+         localStorage.setItem("drink-food", ipVal1a);
+
+         let ip2 = document.getElementById("drink");
+         let ip3 = document.getElementById("food");
+         console.log("ip2: " + ip2);
+         console.log("ip3: " + ip3);
+         let dLev = document.querySelector('[name="drinklevel"]');
+         let fLev = document.querySelector('[name="foodlevel"]');
+         console.log("dLev: " + dLev);
+         console.log("fLev: " + fLev);
+
+            if (!ip2.hidden) {
+                let dLevVal = dLev.value; 
+                if (dLevVal !== "") {
+                    // dropdown.focus();
+                    console.log ("drink Selection value: " + dLevVal);
+                    localStorage.setItem("input2", dLevVal);
+                    let dLevTxt = dLev.options[dLev.selectedIndex].text;
+                    console.log ("input2 txt: " + dLevTxt);
+                    localStorage.setItem("input2T", dLevTxt);
+
+                    fLev.required = false;
+                    document.location.href = "index_FD3.html"; // change this to FD3 if selected drink 
+                } else {
+                    // nothing 
+                }
+            }
+            if (ip2.hidden) {
+                dLev.required = false;
+            }
+
+            if (!ip3.hidden) {
+                let fLevVal = fLev.value; 
+                if (fLevVal !== "") {
+                    console.log ("food selection value: " + fLevVal);
+                    localStorage.setItem("input3", fLevVal);
+                    let fLevTxt = fLev.options[fLev.selectedIndex].text;
+                    console.log ("input3 txt: " + fLevTxt);
+                    localStorage.setItem("input3T", fLevTxt);
+
+                    dLev.required = false;
+                    document.location.href = "index_FD2.html";
+                } else {
+                    // do nothing 
+                }
+            } 
+            if (ip3.hidden) {
+                fLev.required = false;
+            }
+        
+        } else {
+            // do nothing
+        }
+        
+    } if (inputT == null){
+        console.log("inputT: " + inputT); 
+    }      
+}
+
+/* Grab input from FD2 html page */
+function getInput2() {
+    let inputT2 = document.getElementById("FD2"); 
+
+    if (inputT2 !== null) {
+        console.log("inputT2: " + inputT2);
+
+        let selT2 = inputT2.elements["chewbite"]; 
+        let selT2val = selT2.value;
+        let selT2txt = selT2.options[selT2.selectedIndex].text; 
+
+        console.log ("selectedT2 element " + selT2);
+        console.log ("selectedT2 value: " + selT2val);
+        console.log ("selectedT2 text: " + selT2txt);
+
+        localStorage.setItem("chewbite selection value", selT2val);
+        localStorage.setItem("chewbite selection text", selT2txt); 
+
+        let ipVal1a = localStorage.getItem("drink-food");
+        console.log ("drink/food selection:" + ipVal1a);
+
+        if (selT2val == "cb1") {
+            document.location.href = "index_FD4.html";
+        }
+        if (selT2val == "cb2" && ipVal1a == "fl") {
+            document.location.href = "index_FD6.html";
+        } 
+        else {
+                // do nothing
+        }     
+    }
+    if (inputT2 == null) {
+        console.log("inputT2 null: " + inputT2);
+    }
+
+}
+
+
+/* Grab input from FD3 html page */
+function getInput3() {
+    let inputT3 = document.getElementById("FD3"); 
+
+    if (inputT3 !== null) {
+        console.log("inputT3: " + inputT3);
+
+        // let selT4 = inputT4.elements["cconsistency"]; 
+        let selT3 = inputT3.elements.sticky;
+        let selT3val = selT3.value;
+        let selT3txt = selT3.options[selT3.selectedIndex].text; 
+
+        console.log ("selectedT3 element: " + selT3);
+        console.log ("selectedT3 value: " + selT3val);
+        console.log ("selectedT3 text: " + selT3txt);
+
+        localStorage.setItem("sticky selection value", selT3val);
+        localStorage.setItem("sticky selection text", selT3txt); 
+
+        if (selT3val == "st1") {
+            document.location.href = "index_FD5.html";
+        }
+        if (selT3val == "st2") {
+            document.location.href = "index_FD6.html";
+        } else {
+                // do nothing
+        }     
+    }
+    if (inputT3 == null) {
+        console.log("inputT3 null: " + inputT3);
+    }
+}
+
+
+// function getInput31() {
+// //     console.log ("got to getInput3!");
+// //     /* This retrieve the input value from sticky selection */    
+// //     let inputT3 = document.getElementById("sticky"); 
+// //         if (inputT3 !== null) {
+// //         // alert("inputT3: " + inputT3); 
+
+// //         let inputT3Name = inputT3.name; 
+// //         // alert("inputT3Name: " + inputT3Name); 
+
+
+// //             if (inputT3Name == "sticky") {
+// //                 let selectedValFD3 = inputT3.value;
+// //                 let selectedTxtFD3 = inputT3.options[inputT3.selectedIndex].text; 
+
+// //             /* Direct to Linked Page */
+// //                 if (selectedValFD3 == "st1") {
+// //                     // alert("selectedValFD3: " + selectedValFD3);
+// //                         document.location = "index_FD5.html";
+// //                 } 
+// //                 if (selectedValFD3 == "st2") {
+// //                     // alert("selectedValFD3: " + selectedValFD3);                  
+// //                         document.location = "index_FD6.html";
+// //                 } 
+
+// //                 // alert("input from FD3_text part: " + selectedTxtFD3);
+// //                 // alert("input from FD3_value part: " + selectedValFD3);
+
+// //                 localStorage.setItem("sticky selection value", selectedValFD3);
+// //                 localStorage.setItem("sticky selection text", selectedTxtFD3); 
+
+
+// //             } else {
+// //                 // do nothing 
+// //             }
+
+// //         }   if (inputT3 == null) {
+// //             // alert("inputT3: " + inputT3);  
+// //         }
+
+//     }
+
+
+/* Grab input from FD4 html page */
+function getInput4() {
+    let inputT4 = document.getElementById("FD4"); 
+
+    if (inputT4 !== null) {
+        console.log("inputT4: " + inputT4);
+
+        // let selT4 = inputT4.elements["cconsistency"]; 
+        let selT4 = inputT4.elements.consistency;
+        let selT4val = selT4.value;
+        let selT4txt = selT4.options[selT4.selectedIndex].text; 
+
+        console.log ("selectedT4 element: " + selT4);
+        console.log ("selectedT4 value: " + selT4val);
+        console.log ("selectedT4 text: " + selT4txt);
+
+        localStorage.setItem("consistency selection value", selT4val);
+        localStorage.setItem("consistency selection text", selT4txt); 
+
+        if (selT4val == "c1") {
+            document.location.href = "index_FD7.html";
+        }
+        if (selT4val == "c2") {
+            document.location.href = "index_FD8.html";
+        } else {
+                // do nothing
+        }     
+    }
+    if (inputT4 == null) {
+        console.log("inputT4 null: " + inputT4);
+    }
+}
+
+
+// function getInput41() {
+// //     console.log ("got to getInput4!");
+// //     /* This retrieve the input value from consistency selection */    
+// //     let inputT4 = document.getElementById("consistency"); 
+// //         if (inputT4 !== null) {
+// //         // alert("inputT4: " + inputT4); 
+
+// //         let inputT4Name = inputT4.name; 
+// //         // alert("inputT4Name: " + inputT4Name); 
+
+
+// //             if (inputT4Name == "consistency") {
+
+// //                 let selectedValFD4 = inputT4.value;
+// //                 let selectedTxtFD4 = inputT4.options[inputT4.selectedIndex].text; 
+
+// //             /* Direct to Linked Page */
+// //                 if (selectedValFD4 == "c1") {
+// //                     alert("selectedValFD4: " + selectedValFD4);
+// //                         document.location = "index_FD7.html";
+// //                 } 
+// //                 if (selectedValFD4 == "c2") {
+// //                     alert("selectedValFD4: " + selectedValFD4);                  
+// //                         document.location = "index_FD8.html";
+// //                 } 
+
+// //                 // alert("input from FD4_text part: " + selectedTxtFD4);
+// //                 // alert("input from FD4_value part: " + selectedValFD4);
+
+// //                 localStorage.setItem("consistency selection value", selectedValFD4);
+// //                 localStorage.setItem("consistency selection text", selectedTxtFD4); 
+
+
+// //             } else {
+// //                 // do nothing 
+// //             }
+
+// //         }   if (inputT4 == null) {
+// //             // alert("inputT4: " + inputT4);  
+// //         }
+//     }
+
+ 
+ /* Grab input from FD5 html page */
+
+function getInput5() {
+    let inputT5 = document.getElementById("FD5"); 
+
+    if (inputT5 !== null) {
+        console.log("inputT5: " + inputT5);
+
+        // let selT4 = inputT4.elements["cconsistency"]; 
+        let selT5 = inputT5.elements.thick1;
+        let selT5val = selT5.value;
+        let selT5txt = selT5.options[selT5.selectedIndex].text; 
+
+        console.log ("selectedT5 element: " + selT5);
+        console.log ("selectedT5 value: " + selT5val);
+        console.log ("selectedT5 text: " + selT5txt);
+
+        localStorage.setItem("thickness1 selection value", selT5val);
+        localStorage.setItem("thickness1 selection text", selT5txt); 
+
+        if (selT5val == "t11") {
+            document.location.href = "index_FD90.html";
+        }
+        if (selT5val == "t12") {
+            document.location.href = "index_FD91.html";
+        } 
+        if (selT5val == "t13") {
+            document.location.href = "index_FD92.html";
+        }   else {
+                // do nothing
+        }     
+    }
+    if (inputT5 == null) {
+        console.log("inputT5 null: " + inputT5);
+    }
+}
+
+// function getInput51() {
+//     // alert ("got to getInput5!");
+//     /* This retrieve the input value from thickness 1 selection */    
+//     let inputT5 = document.getElementById("thick1"); 
+//         if (inputT5 !== null) {
+//         // alert("inputT5: " + inputT5); 
+
+//         let inputT5Name = inputT5.name; 
+//         // alert("inputT5Name: " + inputT5Name); 
+
+
+//             if (inputT5Name == "thick1") {
+
+//                 let selectedValFD5 = inputT5.value;
+//                 let selectedTxtFD5 = inputT5.options[inputT5.selectedIndex].text; 
+
+//             /* Direct to Linked Page */
+//                 if (selectedValFD5 == "t11") {
+//                     // alert("selectedValFD5: " + selectedValFD5);
+//                         document.location = "index_FD90.html";
+//                 } 
+//                 if (selectedValFD5 == "t12") {
+//                     // alert("selectedValFD5: " + selectedValFD5);                  
+//                         document.location = "index_FD91.html";
+//                 } 
+//                 if (selectedValFD5 == "t13") {
+//                     // alert("selectedValFD5: " + selectedValFD5);                  
+//                         document.location = "index_FD92.html";
+//                 } 
+
+//                 // alert("input from FD5_text part: " + selectedTxtFD5);
+//                 // alert("input from FD5_value part: " + selectedValFD5);
+
+//                 localStorage.setItem("thickness1 selection value", selectedValFD5);
+//                 localStorage.setItem("thickness1 selection text", selectedTxtFD5); 
+
+
+//             } else {
+//                 // do nothing 
+//             }
+
+//         }   if (inputT5 == null) {
+//             // alert("inputT5: " + inputT5);  
+//         }
+//     }   
+
+ /* Grab input from FD6 html page */
+
+function getInput6() {
+    let inputT6 = document.getElementById("FD6"); 
+
+    if (inputT6 !== null) {
+        console.log("inputT6: " + inputT6);
+
+        // let selT4 = inputT4.elements["cconsistency"]; 
+        let selT6 = inputT6.elements.thick2;
+        let selT6val = selT6.value;
+        let selT6txt = selT6.options[selT6.selectedIndex].text; 
+
+        console.log ("selectedT6 element: " + selT6);
+        console.log ("selectedT6 value: " + selT6val);
+        console.log ("selectedT6 text: " + selT6txt);
+
+        localStorage.setItem("thickness2 selection value", selT6val);
+        localStorage.setItem("thickness2 selection text", selT6txt); 
+
+        if (selT6val == "t21") {
+            document.location = "index_FD93.html";
+        } 
+        if (selT6val == "t22") {
+            document.location = "index_FD94.html";
+        }   else {
+                // do nothing
+        }     
+    }
+    if (inputT6 == null) {
+        console.log("inputT6 null: " + inputT6);
+    }
+}
+
+//  function getInput61() {
+//     // alert ("got to getInput6!");
+//     /* This retrieve the input value from thickness 1 selection */    
+//     let inputT6 = document.getElementById("thick2"); 
+//         if (inputT6 !== null) {
+//         // alert("inputT6: " + inputT6); 
+
+//         let inputT6Name = inputT6.name; 
+//         // alert("inputT6Name: " + inputT6Name); 
+
+
+//             if (inputT6Name == "thick2") {
+
+//                 let selectedValFD6 = inputT6.value;
+//                 let selectedTxtFD6 = inputT6.options[inputT6.selectedIndex].text; 
+
+//             /* Direct to Linked Page */
+//                 if (selectedValFD6 == "t21") {
+//                     // alert("selectedValFD6: " + selectedValFD6);
+//                         document.location = "index_FD93.html";
+//                 } 
+//                 if (selectedValFD6 == "t22") {
+//                     // alert("selectedValFD6: " + selectedValFD6);                  
+//                         document.location = "index_FD94.html";
+//                 } 
+
+//                 // alert("input from FD6_text part: " + selectedTxtFD6);
+//                 // alert("input from FD6_value part: " + selectedValFD6);
+
+//                 localStorage.setItem("thickness2 selection value", selectedValFD6);
+//                 localStorage.setItem("thickness2 selection text", selectedTxtFD6); 
+
+
+//             } else {
+//                 // do nothing 
+//             }
+
+//         }   if (inputT6 == null) {
+//             // alert("inputT6: " + inputT6);  
+//         }
+
+//     }   
+
+ /* Grab input from FD7 html page */
+function getInput7() {
+    let inputT7 = document.getElementById("FD7"); 
+
+    if (inputT7 !== null) {
+        console.log("inputT7: " + inputT7);
+
+        // let selT4 = inputT4.elements["cconsistency"]; 
+        let selT7 = inputT7.elements.size;
+        let selT7val = selT7.value;
+        let selT7txt = selT7.options[selT7.selectedIndex].text; 
+
+        console.log ("selectedT7 element: " + selT7);
+        console.log ("selectedT7 value: " + selT7val);
+        console.log ("selectedT7 text: " + selT7txt);
+
+        localStorage.setItem("size selection value", selT7val);
+        localStorage.setItem("size selection text", selT7txt); 
+
+        if (selT7val == "s1") {
+            document.location = "index_FD95.html";
+        } 
+        if (selT7val == "s2") {
+            document.location = "index_FD96.html";
+        }  else {
+                // do nothing
+        }     
+    }
+    if (inputT7 == null) {
+        console.log("inputT7 null: " + inputT7);
+    }
+}
+
+//  function getInput71() {
+//    console.log ("got to getInput7!");
+//     /* This retrieve the input value from thickness 1 selection */    
+//     let inputT7 = document.getElementById("size"); 
+//         if (inputT7 !== null) {
+//         // alert("inputT7: " + inputT7); 
+
+//         let inputT7Name = inputT7.name; 
+//         // alert("inputT7Name: " + inputT7Name); 
+
+
+//             if (inputT7Name == "size") {
+
+//                 let selectedValFD7 = inputT7.value;
+//                 let selectedTxtFD7 = inputT7.options[inputT7.selectedIndex].text; 
+
+//             /* Direct to Linked Page */
+//                 if (selectedValFD7 == "s1") {
+//                     alert("selectedValFD7: " + selectedValFD7);
+//                         document.location = "index_FD95.html";
+//                 } 
+//                 if (selectedValFD7 == "s2") {
+//                     alert("selectedValFD7: " + selectedValFD7);                  
+//                         document.location = "index_FD96.html";
+//                 } 
+
+//                 // alert("input from FD7_text part: " + selectedTxtFD7);
+//                 // alert("input from FD7_value part: " + selectedValFD7);
+
+//                 localStorage.setItem("size selection value", selectedValFD7);
+//                 localStorage.setItem("size selection text", selectedTxtFD7); 
+
+
+//             } else {
+//                 // do nothing 
+//             }
+
+//         }   if (inputT7 == null) {
+//             // alert("inputT7: " + inputT7);  
+//         }
+
+//     }   
+
+
+ /* Grab input from FD8 html page */
+function getInput8() {
+    let inputT8 = document.getElementById("FD8"); 
+
+    if (inputT8 !== null) {
+        console.log("inputT8: " + inputT8);
+
+        let selT8 = inputT8.elements.chew;
+        let selT8val = selT8.value;
+        let selT8txt = selT8.options[selT8.selectedIndex].text; 
+
+        console.log ("selectedT8 element: " + selT8);
+        console.log ("selectedT8 value: " + selT8val);
+        console.log ("selectedT8 text: " + selT8txt);
+
+        localStorage.setItem("chew selection value", selT8val);
+        localStorage.setItem("chew selection text", selT8txt); 
+
+        if (selT8val == "c1") {
+            document.location = "index_FD97e.html";
+        } 
+        if (selT8val == "c2") {
+            document.location = "index_FD97r.html";
+        }    else {
+                // do nothing
+        }     
+    }
+    if (inputT8 == null) {
+        console.log("input8 null: " + inputT8);
+    }
+}
+
+function getInput81() {
+    // alert ("got to getInput8!");
+    /* This retrieve the input value from thickness 1 selection */    
+    let inputT8 = document.getElementById("chew"); 
+        if (inputT8 !== null) {
+        // alert("inputT8: " + inputT8); 
+
+        let inputT8Name = inputT8.name; 
+        // alert("inputT8Name: " + inputT8Name); 
+
+
+            if (inputT8Name == "chew") {
+
+                let selectedValFD8 = inputT8.value;
+                let selectedTxtFD8 = inputT8.options[inputT8.selectedIndex].text; 
+
+            /* Direct to Linked Page */
+                if (selectedValFD8 == "c1") {
+                    // alert("selectedValFD8: " + selectedValFD8);
+                        document.location = "index_FD97e.html";
+                } 
+                if (selectedValFD8 == "c2") {
+                    // alert("selectedValFD8: " + selectedValFD8);                  
+                        document.location = "index_FD97r.html";
+                } 
+
+                // alert("input from FD8_text part: " + selectedTxtFD8);
+                // alert("input from FD8_value part: " + selectedValFD8);
+
+                localStorage.setItem("chew selection value", selectedValFD8);
+                localStorage.setItem("chew selection text", selectedTxtFD8); 
+
+
+            } else {
+                // do nothing 
+            }
+
+        }   if (inputT8 == null) {
+            // alert("inputT8: " + inputT8);  
+        }
+
+    }   
+
+/* The following function "getDropdownValTxt()" works when called within the previous one "getInput()", but now pushed this
+one into the getInput()function. But need the following codes inside getInput() funtion */
+
+        // getDropdownValTxt("drinklevel"); /* seperate out this as a sepedate function */
+        // getDropdownValTxt("foodlevel"); 
+
+// function getDropdownValTxt(elementID) {
+//     let dropdown = document.getElementById(elementID);
+//     let selectedValue = dropdown.value; // Gets the value of the selected option
+//     let selectedText = dropdown.options[dropdown.selectedIndex].text; // Gets the visible text
+
+//     alert('Selected Value: ' + selectedValue);
+//     alert('Selected Text: ' + selectedText);
+
+//     if (elementID == "drinklevel") {
+//         alert(elementID);
+//         localStorage.setItem("inputDTxt", selectedText); 
+//         alert('What is Selected Text for Drink? ' + selectedText);
+//     } if (elementID == "foodlevel") {
+//         alert(elementID);
+//         localStorage.setItem("inputFTxt", selectedText); 
+//         alert('What is Selected Text for Food? ' + selectedText);
+//     } 
+// } 
+
+
+function readStValues() {
+
+    if (localStorage.getItem("input1") !== null) {
+        let storedInput1 = localStorage.getItem("input1");
+        document.getElementById("dispInput1").innerHTML = storedInput1;
+
+        let storedInput1a = localStorage.getItem("drink-food");
+        if (storedInput1a == "dl") {
+            document.getElementById("inputType").innerHTML = "drink";
+        }
+        if (storedInput1a == "fl") {
+            document.getElementById("inputType").innerHTML = "eat";
+        }
+    
+
+        if (localStorage.getItem("input2") !== null ) {
+            let storedInput2 = localStorage.getItem("input2");
+            let storedInput4 = localStorage.getItem("input2T");
+            showDRec(); // unhide drink recommendation 
+
+            document.getElementById("dispInput2").innerHTML = storedInput4;
+        }
+        if (localStorage.getItem("input3") !== null ) {
+            let storedInput3 = localStorage.getItem("input3");
+            let storedInput5 = localStorage.getItem("input3T");
+            showFRec(); // unhide food recommendation 
+
+            document.getElementById("dispInput3").innerHTML = storedInput5;
+        }
+        else {
+            // do nothing 
+        }
+    } 
+
+    if (localStorage.getItem("chewbite selection text") !== null) {
+
+        let storedInput6 = localStorage.getItem("chewbite selection value");
+        let storedInput7 = localStorage.getItem("chewbite selection text");
+    }
+
+    if (localStorage.getItem("sticky selection value") !== null) {
+
+        let storedInput8 = localStorage.getItem("sticky selection value");
+        let storedInput9 = localStorage.getItem("sticky selection text");
+    }
+
+    if (localStorage.getItem("consistency selection value") !== null) {
+
+        let storedInput10 = localStorage.getItem("consistency selection value");
+        let storedInput11 = localStorage.getItem("consistency selection text");
+    }
+
+    if (localStorage.getItem("thickness1 selection value") !== null) {
+
+        let storedInput12 = localStorage.getItem("thickness1 selection value");
+        let storedInput13 = localStorage.getItem("thickness1 selection text");
+
+        console.log ('storedInputFD5 value : ' + storedInput12);
+
+        descriptions (storedInput12);
+        decisions (storedInput12);
+    }
+
+    if (localStorage.getItem("thickness2 selection value") !== null) {
+
+        let storedInput14 = localStorage.getItem("thickness2 selection value");
+        let storedInput15 = localStorage.getItem("thickness2 selection text");
+
+        console.log ('storedInputFD6 value : ' + storedInput14);
+
+        descriptions (storedInput14);
+        decisions (storedInput14);
+        }
+    
+    if (localStorage.getItem("size selection value") !== null) {
+
+        let storedInput16 = localStorage.getItem("size selection value");
+        let storedInput17 = localStorage.getItem("size selection text");
+
+        console.log ('storedInputFD7 value : ' + storedInput16);
+
+        descriptions (storedInput16);    
+        decisions (storedInput16);
+    }
+        
+    if (localStorage.getItem("chew selection value") !== null) {
+
+        let storedInput18 = localStorage.getItem("chew selection value");
+        let storedInput19 = localStorage.getItem("chew selection text");
+
+        console.log ('storedInputFD8 value : ' + storedInput18);
+
+        descriptions (storedInput18);
+        decisions (storedInput18);
+    }
+
+    else {
+        // do nothing 
+        console.log ('no stored input value');
+        return;
+    }
+            
+}
+
+// Provide an IDDSI level statement 
+function descriptions() {
+    // let descript = true; // Change this to test different cases
+
+    let descript = document.getElementById("descriptions");
+
+    if (descript !== null) {
+
+        console.log ('descript sectino is not null on html');
+
+        let storedInput12 = localStorage.getItem("thickness1 selection value");
+        let storedInput14 = localStorage.getItem("thickness2 selection value");
+        let storedInput16 = localStorage.getItem("size selection value");
+        let storedInput18 = localStorage.getItem("chew selection value");
+
+        // set condition be storedinput value
+        if (storedInput12 == "t11") {
+            descript.innerHTML = "<p>Your item matches IDDSI 0 level.</p>";
+        } 
+        if (storedInput12 == "t12") {
+            descript.innerHTML = "<p>Your item matches IDDSI 1 level.</p>";
+        } 
+        if (storedInput12 == "t13") {
+            descript.innerHTML = "<p>Your item matches IDDSI 2 level.</p>";
+        } 
+        if (storedInput14 == "t21") {
+            descript.innerHTML = "<p>Your item matches IDDSI 3 level.</p>";
+        } 
+        if (storedInput14 == "t22") {
+            descript.innerHTML = "<p>Your item matches IDDSI 4 level.</p>";
+        } 
+        if (storedInput16 == "s1") {
+            descript.innerHTML = "<p>Your item matches IDDSI 5 level.</p>";
+        } 
+        if (storedInput16 == "s2") {
+            descript.innerHTML = "<p>Your item matches IDDSI 6 level.</p>";
+        } 
+        if (storedInput18 == "c1") {
+            descript.innerHTML = "<p>Your item matches IDDSI 7 Easy to chew level.</p>";
+        } 
+        if (storedInput18 == "c2") {
+            descript.innerHTML = "<p>Your item matches IDDSI 7 Regular level.</p>";
+        }  
+        else {
+            //do nothing 
+        }
+    }
+    if (descript == null) {
+        console.log ('no description element in html');
+        return;
+    }
+}
+
+// Insert final decision statement 
+function decisions() {
+    let decisions = document.getElementById("decisions");;
+
+    if (decisions !== null) {
+        let storedVal1a = localStorage.getItem("drink-food")
+        console.log ('drink or food selection :' + storedVal1a);
+        let storedInput2 = localStorage.getItem("input2");
+        console.log ('storedInput2 value : ' + storedInput2);
+        let storedInput3 = localStorage.getItem("input3");
+        console.log ('storedInput3 value : ' + storedInput3);
+        let storedInput12 = localStorage.getItem("thickness1 selection value");
+        let storedInput14 = localStorage.getItem("thickness2 selection value");
+        let storedInput16 = localStorage.getItem("size selection value");
+        let storedInput18 = localStorage.getItem("chew selection value");
+
+        // IDDSI 0
+        if (storedInput12 == "t11" && storedVal1a == "dl") {
+            if (storedInput2 == "dl0" ) {
+            decisions.innerHTML = "<p>You can drink this!</p>";
+            } 
+            if (["dl1", "dl2", "dl3", "dl4"].includes(storedInput2)) {
+            decisions.innerHTML = "<p>Sorry, you can't drink this! Need modifications.</p>";   
+            }  
+            if (storedInput2 == "dln") {
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } else {
+                // do nothing 
+            }
+        } 
+
+        // IDDSI 1
+        if (storedInput12 == "t12" && storedVal1a == "dl") {
+            if (["dl0", "dl1"].includes(storedInput2)) {
+            decisions.innerHTML = "<p>You can drink this!</p>";
+            } 
+            if (["dl2", "dl3", "dl4"].includes(storedInput2)) {
+            decisions.innerHTML = "<p>Sorry, you can't drink this! Need modifications.</p>";   
+            }  
+            if (storedInput2 == "dln") {
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } else {
+                // do nothing 
+            }
+        }
+
+        // IDDSI 2
+        if (storedInput12 == "t13" && storedVal1a == "dl") {
+            if (["dl0", "dl1", "dl2"].includes(storedInput2)) {
+            decisions.innerHTML = "<p>You can drink this!</p>";
+            }
+            if (["dl3", "dl4"].includes(storedInput2)) {
+            decisions.innerHTML = "<p>Sorry, you can't drink this! Need modifications.</p>";
+            } 
+            if (["dln"].includes(storedInput2)) {
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } else {
+                // do nothing 
+            }
+        }
+        // IDDSI 3 drink 
+        if (storedInput14 == "t21" && storedVal1a == "dl") {
+            if (["dl0", "dl1", "dl2", "dl3"].includes(storedInput2)) {
+                decisions.innerHTML = "<p>You can drink this!</p>";
+            }
+            if (["dl4"].includes(storedInput2)){
+                decisions.innerHTML = "<p>Sorry, you can't drink can this!.</p>";
+            }
+            if (storedInput2 == "dln"){
+                decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }
+        }
+        // IDDSI 3 Food
+        if (storedInput14 == "t21" && storedVal1a == "fl") {
+            console.log ("storedInput 14 and storedVal1a value: " + storedInput14 + storedVal1a);
+             if (["fl3", "fl4", "fl5", "fl6", "fl7e", "fl7r"].includes(storedInput3)) {
+                decisions.innerHTML = "<p>You can eat this!</p>";
+            }
+            // if (["fl4, fl5, fl6, fl7e, fl7r"].includes(storedInput3)){
+            //     console.log ('storedInput 14 and fl4');
+            //     decisions.innerHTML = "<p>Sorry, you can't eat/drink can this!.</p>";
+            // }
+            if (storedInput3 == "fln"){
+                decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }
+        }
+        // IDDSI 4 drink 
+        if (storedInput14 == "t22" && storedVal1a == "dl") {
+            if (["dl0", "dl1", "dl2", "dl3", "dl4"].includes(storedInput2)) {
+                decisions.innerHTML = "<p>You can drink this!</p>";
+            }
+            if (storedInput2 == "dln") {
+                decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }
+        }
+        // IDDSI 4 food
+        if (storedInput14 == "t22" && storedVal1a == "fl") {
+            if (["fl4", "fl5", "fl6", "fl7e", "fl7r"].includes(storedInput3)) {
+                decisions.innerHTML = "<p>You can eat this!</p>";
+            }
+            if (storedInput3 == "fl3") {
+                decisions.innerHTML = "<p>Sorry, you can't eat can this!.</p>";
+            }
+            if (storedInput3 == "fln") {
+                decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }
+        }
+
+        // IDDSI 5
+        if (storedInput16 == "s1") {
+            if (["fl5","fl6", "fl7e","fl7r"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>You can eat this!</p>";
+            }
+            if (["fl3", "fl4"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>Sorry, you can't eat this! Need modifications.</p>";   
+            }
+            if (storedInput3 == "fln"){
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }
+        }
+
+        // IDDSI 6
+        if (storedInput16 == "s2") {
+            if (["fl6", "fl7e", "fl7r"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>You can eat this!</p>";
+            }
+            if (["fl3", "fl4", "fl5"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>Sorry, you can't eat this! Need modifications.</p>";   
+            }
+            if (storedInput3 == "fln"){
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }  
+        }
+        // IDDSI 7e and 7f
+        if (storedInput18 == "c1") {
+            if (["fl7e", "fl7r"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>You can eat this!</p>";
+            }
+            if (["fl3", "fl4", "fl5", "fl6"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>Sorry, you can't eat this! Need modifications.</p>";   
+            }
+            if (storedInput3 == "fln"){
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }            
+        }   
+        if (storedInput18 == "c2") {
+            if (["fl7r"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>You can eat this!</p>";
+            }
+            if (["fl3", "fl4", "fl5", "fl6", "fl7e"].includes(storedInput3)) {
+            decisions.innerHTML = "<p>Sorry, you can't eat this! Need modifications.</p>";   
+            }
+            if (storedInput3 == "fln"){
+            decisions.innerHTML = "<p>Please consult with your SLP.</p>";   
+            } 
+            else {
+                // do nothing 
+            }  
+        } 
+        else {
+            //do nothing 
+        }
+    }   
+    if (decisions == null) {
+        console.log ('no decisions element in html');
+        return;
+    }
+}
+
+// function videoDisplay(){ 
+
+//     let videoSelector = document.getElementById('thick1');
+//     let videoFrame = document.getElementById('videoFrame');
+//     let selectedVideo = true; 
+
+//     videoSelector.addEventListener('change', function() {
+//       let selectedVideo = this.value;
+//       alert('this value: ' + selectedVideo)
+//       if (selectedVideo == "t11") {
+//         videoFrame.src = "https://www.youtube.com/embed/j100JEKGKG0?si=kxur_E-tviYAleFb";
+//         } 
+//       if (selectedVideo == "t12") {
+//         videoFrame.src = "https://www.youtube.com/embed/lHjjVvHrTNQ?si=46sk__PPnBgmOnxI";
+//       }
+//       if (selectedVideo == "t13") {
+//         videoFrame.src = "https://www.youtube.com/embed/-dCGsu8n26E?si=cup6kYM6BFJbBfF3";
+//       }
+//       else {
+//         // do nothing 
+//       }
+//      }
+//     );
+// }
+
+
+function videoDemo() { 
+
+    let videos = document.getElementById("videos");
+    console.log ('get to video sectino: ' + videos);
+
+    if (videos !== null) {
+
+        console.log ('the videos section is not null on html');
+
+    let storedInput12 = localStorage.getItem("thickness1 selection value");
+    let storedInput14 = localStorage.getItem("thickness2 selection value");
+    let storedInput16 = localStorage.getItem("size selection value");
+    let storedInput18 = localStorage.getItem("chew selection value");
+
+
+        if (storedInput12 == "t11") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/j100JEKGKG0?si=kxur_E-tviYAleFb";
+            } 
+        if (storedInput12== "t12") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/lHjjVvHrTNQ?si=46sk__PPnBgmOnxI";
+        }
+        if (storedInput12 == "t13") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/-dCGsu8n26E?si=cup6kYM6BFJbBfF3";
+        }
+        if (storedInput14 == "t21") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/-iomYBGwo1I?si=x4aSOqyu-g1teJp2";
+        } 
+        if (storedInput14 == "t22") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/T6fgFlzahoE?si=RnGEgvGPz8fPh4qi";
+        } 
+        if (storedInput16 == "s1") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/dGy51RUbrdo?si=bpjEzOLz5dw-4P0P";
+        } 
+        if (storedInput16 == "s2") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/bngfYnnOAKo?si=4R3TNQ06bcF_FrNX";
+        } 
+        if (storedInput18 == "c1") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/vzdoFcwpqX0?si=QafjJEGTntN7zIn3&amp;start=16";
+        } 
+        if (storedInput18 == "c2") {
+            showVideo();
+            videoFrame.src = "https://www.youtube.com/embed/vzdoFcwpqX0?si=QafjJEGTntN7zIn3&amp;start=00&&end=16";
+        }  
+        else {
+            // do nothing 
+        }
+    }
+    if (videos == null) {
+        console.log ('no videos demo section in html');
+        return;
+    }
+}
+
+
+function showVideo() {
+    let vidFrame = document.getElementById("videoFrame");
+    vidFrame.classList.remove("hidden");
+    vidFrame.classList.add("visible");
+}
+
+function showChoiceD() {
+    let dfSel = document.getElementById("DF");
+    dfSel.classList.remove("hidden");
+    dfSel.classList.add("visible");
+    let dSel = document.getElementById("drink");
+    dSel.classList.remove("hidden");
+    dSel.classList.add("visible");
+}
+
+function showChoiceF() {
+    let dfSel = document.getElementById("DF");
+    dfSel.classList.remove("hidden");
+    dfSel.classList.add("visible");
+    let fSel = document.getElementById("food");
+    fSel.classList.remove("hidden");
+    fSel.classList.add("visible");
+}
+
+function showDRec() {
+    let dSel = document.getElementById("drink");
+    dSel.classList.remove("hidden");
+    dSel.classList.add("visible");
+}
+
+function showFRec() {
+    let fSel = document.getElementById("food");
+    fSel.classList.remove("hidden");
+    fSel.classList.add("visible");
+}
+
+
+// function hideFSelect1() {
+//   let select = document.getElementById("foodlevel");
+//   select.style.display = "hidden";
+//   select.disabled = true;   // disabled fields are ignored in validation
+
+// }
+
+// function unreqFSelect() {
+//     let food = document.getElementById("food");
+//     console.log ('Got to this element ID : ' + food);
+//     food.classList.remove("hidden");
+//     food.classList.add("visible");
+//     let fsel = document.getElementById("foodlevel");
+// //   select.style.display = "none";     // hide it
+//     fsel.removeAttribute("required"); // remove validation requirement
+// }
+
+// function unreqDSelect() {
+//     let drink = document.getElementById("drink");
+//     console.log ('Got to this element ID : ' + drink);
+//     drink.classList.remove("hidden");
+//     drink.classList.add("visible");
+//     let dsel = document.getElementById("drinklevel");
+// //   select.style.display = "none";     // hide it
+//     dsel.removeAttribute("required"); // remove validation requirement
+// }
+
+function defaultImg() {
+    let imageElement = document.getElementById('imageFrame');
+    imageElement.src = `image/default.jpeg`;
+    console.log ('default image function executed');
+}
+
+function reLoad() {
+  if (sessionStorage.getItem("reloadPage") === "true") {
+    console.log ('reload page is true');
+    sessionStorage.removeItem("reloadPage");
+    location.reload();
+  }
+  if (sessionStorage.getItem("reloadPage") === "false") { 
+    // do nothing
+    console.log ('reload page is false');
+    return;
+  }
+}
+
+function goHome() {
+    document.location = "index.html";
+}
+
+function goBack() {
+  sessionStorage.setItem("reloadPage", "true");
+  history.back();
+}
+
+function imageDisplay2(){ 
+    let imageSelector = document.getElementById('chewbite');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage);
+
+      if (selectedImage == "cb1") { 
+        imageElement.src = `image/greencheck.jpeg`;
+        } 
+      if (selectedImage == "cb2") {
+        imageElement.src = `image/redx.jpeg`;
+      }
+      if (selectedImage == "") {
+        imageElement.src = `image/default.jpeg`;
+      }  else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+function imageDisplay3(){
+    let imageSelector = document.getElementById('sticky');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage)
+      if (selectedImage == "st1") { 
+        imageElement.src = `image/fallsfork1.jpeg`;
+        } 
+      if (selectedImage == "st2") {
+        imageElement.src = `image/staysfork.jpeg`;
+      } 
+      if (selectedImage == "") {
+        imageElement.src = `image/default.jpeg`;
+      } else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+function imageDisplay4(){
+    let imageSelector = document.getElementById('consistency');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage)
+      if (selectedImage == "c1") { 
+        imageElement.src = `image/oneconst.jpeg`;
+        } 
+      if (selectedImage == "c2") {
+        imageElement.src = `image/mixconst.jpeg`;
+      }
+      if (selectedImage == "") {
+        imageElement.src = `image/default.jpeg`;
+      } else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+function imageDisplay5(){ 
+    let imageSelector = document.getElementById('thick1');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage)
+      if (selectedImage == "t11") { 
+        imageElement.src = `image/water.jpeg`;
+        } 
+      if (selectedImage == "t12") {
+        imageElement.src = `image/babyformula.jpeg`;
+      }
+      if (selectedImage == "t13") {
+        imageElement.src = `image/milkshake.jpeg`;
+      }
+      else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+function imageDisplay6(){ 
+    let imageSelector = document.getElementById('thick2');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage)
+      if (selectedImage == "t21") { 
+        imageElement.src = `image/slowdrip.jpeg`;
+        } 
+      if (selectedImage == "t22") {
+        imageElement.src = `image/mound.jpeg`;
+      }       
+      if (selectedImage == "") {
+        imageElement.src = `image/default.jpeg`;
+      } else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+function imageDisplay7(){ 
+    let imageSelector = document.getElementById('size');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage)
+      if (selectedImage == "s1") { 
+        imageElement.src = `image/ID5.jpeg`;
+        } 
+      if (selectedImage == "s2") {
+        imageElement.src = `image/ID6.jpeg`;
+      }       
+      if (selectedImage == "") {
+        imageElement.src = `image/default.jpeg`;
+      } else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+function imageDisplay8(){ 
+    let imageSelector = document.getElementById('chew');
+    let imageElement = document.getElementById('imageFrame');
+    let selectedImage = true; 
+
+    imageSelector.addEventListener('change', function() {
+      let selectedImage = this.value;
+      console.log ('this value: ' + selectedImage)
+      if (selectedImage == "c1") { 
+        imageElement.src = `image/easychew.jpeg`;
+        } 
+      if (selectedImage == "c2") {
+        imageElement.src = `image/regchew.jpeg`;
+      }       
+      if (selectedImage == "") {
+        imageElement.src = `image/default.jpeg`;
+      } else {
+        // do nothing 
+      }
+     }
+    );
+}
+
+
+
+
+
+  
+  
